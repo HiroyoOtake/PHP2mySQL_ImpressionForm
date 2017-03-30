@@ -22,7 +22,7 @@ $stmt->bindParam(":impression", $impression);
 
 $stmt->execute();
 
-echo '成功しました!'
+// echo '成功しました!'
 
 ?>
 
@@ -36,5 +36,7 @@ echo '成功しました!'
 		<h1>下記の内容が投稿されました</h1>
 		<p>名前:<?php echo h($name); ?></p>
 		<p>感想:<?php echo h($impression); ?></p>
+		<p><a href="index.php">戻る</a></p>
+		<p><a href="result.php">投稿内容を見る</a></p>
 	</body>
 </html>

@@ -12,5 +12,6 @@
 			感想:<input type="text" name="impression">
 			<input type="submit" value="感想を投稿">
 		</form>
+		<p><a href="result.php">投稿内容を見る</a></p>
 	</body>
 </html>
