@@ -1,5 +1,12 @@
 <?php
 
+if (empty($_POST['name']) || empty($_POST['impression']))
+{
+	echo '名前か感想が未入力です';
+	echo'<a href="index.php">戻る</p>';
+	exit;
+}
+
 $name = $_POST['name'];
 $impression = $_POST['impression'];
 
