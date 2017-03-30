@@ -1,5 +1,7 @@
 <?php
 
+require_once('functions.php');
+
 if (empty($_POST['name']) || empty($_POST['impression']))
 {
 	echo '名前か感想が未入力です';
@@ -9,6 +11,18 @@ if (empty($_POST['name']) || empty($_POST['impression']))
 
 $name = $_POST['name'];
 $impression = $_POST['impression'];
+
+$dbh = connectDb();
+
+$sql = "insert into posts (name, impression, created_at) values (:name, :impression, now())";
+$stmt = $dbh->prepare($sql);
+
+$stmt->bindParam(":name", $name);
+$stmt->bindParam(":impression", $impression);
+
+$stmt->execute();
+
+echo '成功しました!'
 
 ?>
 
@@ -20,7 +34,7 @@ $impression = $_POST['impression'];
 	</head>
 	<body>
 		<h1>下記の内容が投稿されました</h1>
-		<p>名前:<?php echo $name; ?></p>
-		<p>感想:<?php echo $impression; ?></p>
+		<p>名前:<?php echo h($name); ?></p>
+		<p>感想:<?php echo h($impression); ?></p>
 	</body>
 </html>
